@@ -33,9 +33,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                withCredentials {[
-                    usernamePassword( credentials('server-credential') , usernameVariable : USER , passwordVariable : PWD)
-                ]} {
+                withCredentials ([
+                    usernamePassword(credentials : 'server-credential' , usernameVariable : USER , passwordVariable : PWD)
+                ]) {
                     sh "some script ${USER} ${PWD}"
                 }
             }
