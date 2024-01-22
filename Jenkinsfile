@@ -10,7 +10,7 @@ pipeline {
     }
     environment {
         NEW_VERSION = '1.3.0'
-        SERVER_CREDENTIALS = credentials('server-credential')
+        //SERVER_CREDENTIALS = credentials('server-credential')
     }
 
     stages {
@@ -36,7 +36,7 @@ pipeline {
                 withCredentials ([
                     usernamePassword(credentials : 'server-credential' , usernameVariable : USER , passwordVariable : PWD)
                 ]) {
-                    sh "some script ${USER} ${PWD}"
+                    echo "some script ${USER} ${PWD}"
                 }
             }
         }
